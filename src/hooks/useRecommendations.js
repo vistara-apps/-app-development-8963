@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
-import { generateRecommendations } from '../lib/openai'
-import { deductTokens, canAffordAction, TOKEN_COSTS } from '../lib/stripe'
+import { generateRecommendations } from '../lib/openai.js'
+import { deductTokens, canAffordAction, TOKEN_COSTS } from '../lib/stripe.js'
 import useAppStore from '../stores/useAppStore'
 import toast from 'react-hot-toast'
 

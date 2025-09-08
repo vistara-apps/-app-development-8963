@@ -9,7 +9,7 @@ import SavedLists from './components/SavedLists'
 import FarcasterFrame from './components/FarcasterFrame'
 import TokenBalance from './components/TokenBalance'
 import useAppStore from './stores/useAppStore'
-import { getUserTokenBalance } from './lib/stripe'
+import { getUserTokenBalance } from './lib/stripe.js'
 
 function AppContent() {
   const { 

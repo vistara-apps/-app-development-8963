@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Sparkles, Share2, Heart, RefreshCw } from 'lucide-react'
-import { generateRecommendations } from '../lib/openai'
-import { shareRecommendation, createCast } from '../lib/farcaster'
+import { generateRecommendations } from '../lib/openai.js'
+import { shareRecommendation, createCast } from '../lib/farcaster.js'
 import useAppStore from '../stores/useAppStore'
 import toast from 'react-hot-toast'
 

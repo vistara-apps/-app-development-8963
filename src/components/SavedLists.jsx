@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Plus, List, Music, Film, Share2, Trash2, Edit3, Eye, EyeOff } from 'lucide-react'
 import useAppStore from '../stores/useAppStore'
-import { sharePlaylist } from '../lib/farcaster'
+import { sharePlaylist } from '../lib/farcaster.js'
 import toast from 'react-hot-toast'
 
 const SavedLists = () => {

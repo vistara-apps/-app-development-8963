@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { X, Check, Coins, Star } from 'lucide-react'
-import { TOKEN_PACKAGES, createPaymentIntent, getStripe } from '../lib/stripe'
+import { TOKEN_PACKAGES, createPaymentIntent, getStripe } from '../lib/stripe.js'
 import useAppStore from '../stores/useAppStore'
 import toast from 'react-hot-toast'
 

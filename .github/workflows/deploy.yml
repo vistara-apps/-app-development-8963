@@ -13,6 +13,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+        cache: 'npm'
+        cache-dependency-path: 'package-lock.json'
+      
     - name: Verify package-lock.json exists
       run: |
         echo "Checking for package-lock.json..."
@@ -24,13 +31,6 @@ jobs:
         fi
         ls -la package-lock.json
       
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
-        cache: 'npm'
-        cache-dependency-path: 'package-lock.json'
-        
     - name: Install dependencies
       run: |
         echo "Node version: $(node --version)"

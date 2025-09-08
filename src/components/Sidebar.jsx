@@ -8,18 +8,41 @@ import {
   Settings, 
   User,
   Menu,
-  X
+  X,
+  Coins,
+  Sparkles,
+  TrendingUp,
+  LogOut
 } from 'lucide-react'
+import useAppStore from '../stores/useAppStore'
 
 const Sidebar = ({ currentView, setCurrentView }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { user, resetUser } = useAppStore()
+
+  // Try to use Privy logout if available
+  const handleLogout = () => {
+    try {
+      // If Privy is available, use it
+      if (window.privy?.logout) {
+        window.privy.logout()
+      } else {
+        resetUser()
+      }
+    } catch (error) {
+      resetUser()
+    }
+  }
 
   const menuItems = [
     { id: 'dashboard', icon: Home, label: 'Dashboard' },
-    { id: 'recommendations', icon: Music, label: 'Discover' },
+    { id: 'recommendations', icon: Sparkles, label: 'Discover' },
     { id: 'moods', icon: Heart, label: 'Moods' },
-    { id: 'movies', icon: Film, label: 'Movies' },
     { id: 'lists', icon: List, label: 'My Lists' },
+    { id: 'tokens', icon: Coins, label: 'Tokens' },
+    { id: 'trending', icon: TrendingUp, label: 'Trending' },
+    { id: 'music', icon: Music, label: 'Music' },
+    { id: 'movies', icon: Film, label: 'Movies' },
     { id: 'profile', icon: User, label: 'Profile' },
     { id: 'settings', icon: Settings, label: 'Settings' },
   ]
@@ -79,15 +102,43 @@ const Sidebar = ({ currentView, setCurrentView }) => {
 
         {/* User Section */}
         <div className="absolute bottom-6 left-6 right-6">
-          <div className="flex items-center gap-3 p-3 bg-gray-800 rounded-md">
-            <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
-              <User size={16} />
+          {user ? (
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 p-3 bg-gray-800 rounded-md">
+                <img 
+                  src={user.farcaster?.pfp_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user.id}`}
+                  alt="Profile"
+                  className="w-8 h-8 rounded-full"
+                />
+                <div className="flex-1 min-w-0">
+                  <p className="text-sm font-medium truncate">
+                    {user.farcaster?.displayName || user.email?.split('@')[0] || 'User'}
+                  </p>
+                  <p className="text-xs text-text-secondary">
+                    {user.farcaster?.username ? `@${user.farcaster.username}` : 'Connected'}
+                  </p>
+                </div>
+              </div>
+              
+              <button
+                onClick={handleLogout}
+                className="w-full flex items-center gap-3 px-3 py-2 text-sm text-red-400 hover:bg-red-400/10 rounded-md transition-colors"
+              >
+                <LogOut size={16} />
+                <span>Sign Out</span>
+              </button>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium truncate">Anonymous</p>
-              <p className="text-xs text-text-secondary">Free Tier</p>
+          ) : (
+            <div className="flex items-center gap-3 p-3 bg-gray-800 rounded-md">
+              <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                <User size={16} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-medium truncate">Not Connected</p>
+                <p className="text-xs text-text-secondary">Sign in to continue</p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 

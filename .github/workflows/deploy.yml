@@ -15,9 +15,12 @@ jobs:
       
     - name: Verify package-lock.json exists
       run: |
+        echo "Checking for package-lock.json..."
         if [ ! -f package-lock.json ]; then
           echo "package-lock.json not found, generating it..."
           npm install --package-lock-only
+        else
+          echo "package-lock.json found!"
         fi
         ls -la package-lock.json
       

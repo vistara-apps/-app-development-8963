@@ -13,7 +13,19 @@
     "react-dom": "^18.2.0",
     "lucide-react": "^0.263.1",
     "@radix-ui/react-dialog": "^1.0.5",
-    "@radix-ui/react-tabs": "^1.0.4"
+    "@radix-ui/react-tabs": "^1.0.4",
+    "@privy-io/react-auth": "^1.46.4",
+    "@supabase/supabase-js": "^2.38.0",
+    "@stripe/stripe-js": "^2.1.11",
+    "openai": "^4.20.1",
+    "axios": "^1.6.0",
+    "react-hot-toast": "^2.4.1",
+    "zustand": "^4.4.6",
+    "framer-motion": "^10.16.4",
+    "@radix-ui/react-toast": "^1.1.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-select": "^2.0.0",
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

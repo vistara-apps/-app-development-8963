@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: hsl(230 15% 12%);
+  --accent: hsl(180 80% 50%);
+  --primary: hsl(240 88% 60%);
+  --surface: hsl(230 15% 16%);
+  --text-primary: hsl(0 0% 95%);
+  --text-secondary: hsl(230 5% 70%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, hsl(240 88% 60%) 0%, hsl(180 80% 50%) 100%);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
